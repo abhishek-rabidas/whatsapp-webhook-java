@@ -19,7 +19,7 @@ public class API {
     @Value("${VERIFY_TOKEN}")
     private String VERIFY_TOKEN;
 
-    @GetMapping("/webhook")
+    @GetMapping()
     public ResponseEntity<String> verify(@RequestParam("hub.mode") String mode, @RequestParam("hub.verify_token") String verifyToken,
                                          @RequestParam("hub.challenge") String challenge) {
         if (mode != null && verifyToken != null) {
@@ -31,7 +31,7 @@ public class API {
         return ResponseEntity.status(403).body(null);
     }
 
-    @PostMapping(path = "/webhook")
+    @PostMapping()
     public void webhook(@RequestBody Request request) throws Exception {
         MessageEntity message = new MessageEntity();
         message.setSenderNumber(request.getEntry()[0].getChanges()[0].getValue().getMessages()[0].getFrom());

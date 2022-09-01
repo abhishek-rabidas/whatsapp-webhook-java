@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 public class Entry {
-    private int id;
+    private String id;
     private Changes[] changes;
 }
